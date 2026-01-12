@@ -172,32 +172,3 @@ def run_esg_batch_extraction(
 
     except Exception as e:
         raise CustomException(e, sys)
-
-
-
-# --- DEMO RUN ---
-
-if __name__ == "__main__":
-    try:
-        BASE_RUN_DIR = Path(r"runs\Infosys BRSR 2024_20260107_085246")
-        
-        # Manually define args for a direct function call (if not using the class)
-        # OR load your master config using read_yaml
-        extraction_args = {
-            "config_path": "config/retrieval_master_config.yaml",
-            "db_path": str(BASE_RUN_DIR / "chroma_db"),
-            "question_path": "qa_and_report_generation/batched_question.jsonl",
-            "run_dir": BASE_RUN_DIR,
-            "model": "openai/gpt-4.1-mini",
-            "debug_filename": "batchwise_responses_audit.md",
-            "answers_filename": "batchwise_answers_only.txt"
-        }
-
-        logging.info(">>> Starting ESG Report Generation Pipeline <<<")
-        run_esg_batch_extraction(**extraction_args)
-        logging.info(">>> Pipeline execution complete <<<")
-
-    except Exception as e:
-        # Catching and formatting the error using your custom utility
-        err = CustomException(e, sys)
-        logging.error(f"Critical Pipeline Failure: {err}")

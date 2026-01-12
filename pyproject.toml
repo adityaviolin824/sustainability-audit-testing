@@ -39,5 +39,6 @@ dependencies = [
     "python-docx",
     "openpyxl",
     "fastapi",
-    "pyahocorasick"
+    "pyahocorasick",
+    "python-multipart"
 ]

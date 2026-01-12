@@ -157,27 +157,3 @@ def run_post_processing_pipeline(
 
     except Exception as e:
         raise CustomException(e, sys)
-
-
-
-# --------------------------------------------------
-# Entry Point
-# --------------------------------------------------
-
-if __name__ == "__main__":
-    # --- Configurable Parameters ---
-    BASE_DIR = Path(r"runs\Infosys BRSR 2024_20260107_085246")
-    
-    config = {
-        "input_file": BASE_DIR / "batchwise_answers_only.txt",
-        "intermediate_file": BASE_DIR / "extraction_records.json",
-        "output_file": BASE_DIR / "consolidated_records.json",
-        "model": "openai/gpt-5-nano"
-    }
-
-    try:
-        logger.info("Starting ESG Post-Processing Pipeline...")
-        run_post_processing_pipeline(**config)
-        logger.info("Pipeline Execution Complete.")
-    except Exception as e:
-        logger.error(f"Pipeline crashed: {e}")

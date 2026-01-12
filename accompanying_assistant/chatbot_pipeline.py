@@ -1,5 +1,4 @@
 import sys
-import gradio as gr
 from pathlib import Path
 from typing import List, Dict, Any
 from litellm import completion
@@ -106,28 +105,3 @@ class AccompanyingChatbot:
         except Exception as e:
             raise CustomException(e, sys)
 
-
-
-# --- GRADIO TEST INTERFACE ---
-if __name__ == "__main__":
-    # Settings for local debugging
-    DEBUG_RUN_ID = "Infosys BRSR 2024_20260111_202132" # Replace with your active run_id
-    DB_PATH = Path("runs") / DEBUG_RUN_ID / "chroma_db"
-    CONFIG = Path("config/accompanying_chatbot_config.yaml")
-
-    bot = AccompanyingChatbot(config_path=CONFIG, db_path=DB_PATH)
-
-    def gradio_wrapper(message, history):
-        """Adapts Gradio's history format to the bot's expected OpenAI format."""
-        # Gradio 'messages' type already provides list[dict] with role/content
-        return bot.get_response(message, history)
-
-    demo = gr.ChatInterface(
-        fn=gradio_wrapper,
-        title="ESG Audit Assistant - Debugger",
-        description=f"Testing Run ID: {DEBUG_RUN_ID}"
-        )
-
-
-    print(f"Launching Gradio test server for Run: {DEBUG_RUN_ID}...")
-    demo.launch(server_name="127.0.0.1", server_port=7861)

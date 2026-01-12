@@ -160,24 +160,3 @@ def run_reporting_pipeline(
 
     except Exception as e:
         raise CustomException(e, sys)
-
-# --------------------------------------------------
-# Entry Point
-# --------------------------------------------------
-
-if __name__ == "__main__":
-    # --- Configurable Parameters ---
-    RUN_DIR = Path(r"runs\Infosys BRSR 2024_20260107_085246")
-    
-    config = {
-        "consolidated_json_path": RUN_DIR / "consolidated_records.json",
-        "questions_jsonl_path": Path("qa_and_report_generation/batched_question.jsonl"),
-        "output_docx_path": RUN_DIR / "ESG_Audit_Document.docx",
-        "output_xlsx_path": RUN_DIR / "ESG_Disclosures.xlsx"
-    }
-
-    try:
-        logger.info("Starting ESG Reporting Pipeline...")
-        run_reporting_pipeline(**config)
-    except Exception as e:
-        logger.error(f"Reporting Pipeline crashed: {e}")

@@ -90,10 +90,3 @@ def main(gen_path: str, ref_path: str, output_path: str):
     except Exception as e:
         err = CustomException(e, sys)
         logging.error(f"Evaluation failed: {err}")
-
-if __name__ == "__main__":
-    if len(sys.argv) < 4:
-        print("Usage: uv run eval_standalone.py <consolidated_json> <ground_truth_jsonl> <output_json>")
-        sys.exit(1)
-        
-    main(sys.argv[1], sys.argv[2], sys.argv[3])

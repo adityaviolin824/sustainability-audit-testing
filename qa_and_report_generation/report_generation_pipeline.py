@@ -66,18 +66,3 @@ class ESGReportPipeline:
         except Exception as e:
             logger.error(f"System Error: {e}")
             raise CustomException(e, sys)
-
-
-
-# --- EXAMPLE USAGE IN MULTI-USER ENVIRONMENT ---
-if __name__ == "__main__":
-    # In a real scenario, this 'session_run_dir' would be passed from 
-    # your backend or user session manager.
-    session_run_dir = Path(r"runs\Infosys BRSR 2024_20260107_085246") 
-    MASTER_CONFIG = Path("config/qa_and_report_master_config.yaml")
-
-    try:
-        pipeline = ESGReportPipeline(master_config_path=MASTER_CONFIG, run_dir=session_run_dir)
-        pipeline.run()
-    except Exception as e:
-        logger.critical(f"Process terminated: {e}")
