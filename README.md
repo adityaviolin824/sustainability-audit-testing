@@ -4,7 +4,7 @@
 
 ---
 
-## ⚠️ Audit-Grade Disclaimer
+## Audit-Grade Disclaimer
 
 This system demonstrates layout-aware Retrieval-Augmented Generation (RAG) for **Business Responsibility and Sustainability Reporting (BRSR)** and ESG audit assistance. It is explicitly designed for **Augmented Auditing (Human-in-the-Loop)** workflows and is aligned with:
 
@@ -124,7 +124,7 @@ The retrieval pipeline balances **recall and precision**, with complexity introd
 
 ## 5. Evaluation & Performance Metrics
 
-The system was evaluated using **internal benchmarking** across 150+ complex ESG and BRSR-style queries on reports such as Jio Financial Services, Accenture, and the Adani ESG Factbook.
+The system was evaluated using **internal benchmarking** across 150+ complex ESG and BRSR-style queries on reports such as Jio Financial Services, Infosys, and the Adani ESG Factbook.
 
 ### Retrieval Performance (Internal)
 
