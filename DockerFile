@@ -18,7 +18,6 @@ ENV OMP_NUM_THREADS=1
 ENV MKL_NUM_THREADS=1
 
 # 1. Install dependencies using uv
-# --system tells uv to install into the global site-packages (standard for Docker)
 COPY requirements.txt .
 RUN uv pip install --no-cache --system -r requirements.txt
 
@@ -28,7 +27,6 @@ RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTr
 # 3. Copy project files
 COPY . .
 
-# Create necessary directories
 RUN mkdir -p input memory outputs config && \
     chmod -R 777 input memory outputs config
 
@@ -38,9 +36,10 @@ USER esguser
 
 EXPOSE ${PORT}
 
-# 5. Healthcheck
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
     CMD python -c "import urllib.request; urllib.request.urlopen(f'http://localhost:{PORT}/status')" || exit 1
 
 # 6. Start the application
 CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT} --workers 1"]
+
+
