@@ -5,6 +5,7 @@ from datetime import datetime
 from typing import Dict, List
 from fastapi import FastAPI, UploadFile, File, BackgroundTasks, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from utils.read_yaml import read_yaml
 from utils.logger import logging
 from utils.security_gate import SecurityGate
@@ -230,21 +231,13 @@ async def fetch_audit_status(run_id: str):
     return {"run_id": run_id, "status": TASK_STATE.get(run_id, "not_found")}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@app.get("/status")
+async def health_check():
+    # You can add logic here to check if API keys are loaded
+    return JSONResponse(
+        content={"status": "healthy", "version": "1.0.0"},
+        status_code=200
+    )
 
 if __name__ == "__main__":
     import uvicorn
