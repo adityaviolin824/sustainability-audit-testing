@@ -17,29 +17,26 @@ ENV PORT=10000
 ENV OMP_NUM_THREADS=1
 ENV MKL_NUM_THREADS=1
 
-# 1. Install dependencies using uv with a specific index strategy
 COPY requirements.txt .
 RUN uv pip install --no-cache --system --index-strategy unsafe-best-match -r requirements.txt
 
-# 2. BAKE THE MODEL
 RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('paraphrase-MiniLM-L3-v2')"
 
-# 3. Copy project files
+# 1. Copy your project files into the container
 COPY . .
 
-RUN mkdir -p input memory outputs config && \
-    chmod -R 777 input memory outputs config
+# 2. THE FIX: Create the user AND give them ownership of the entire /app directory
+# This must happen as the LAST step before switching to the user.
+RUN useradd -m esguser && chown -R esguser:esguser /app
 
-# 4. Security: Non-root user
-RUN useradd -m esguser
+# 3. Switch to the non-root user
 USER esguser
 
 EXPOSE ${PORT}
 
+# Healthcheck
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
     CMD python -c "import urllib.request; urllib.request.urlopen(f'http://localhost:{PORT}/status')" || exit 1
 
-# 6. Start the application
+# Start
 CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT} --workers 1"]
-
-
