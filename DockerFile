@@ -1,31 +1,45 @@
 FROM python:3.13-slim
 
+# Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
+# Python and Resource management
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV PORT=10000
+# Force torch/transformers to use only 1 thread to save RAM
+ENV OMP_NUM_THREADS=1
+ENV MKL_NUM_THREADS=1
 
+# 1. Install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
+# 2. BAKE THE MODEL: Downloads the small model into the image layers
+# This prevents OOM errors during first-time startup on Render/GCP
+RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('paraphrase-MiniLM-L3-v2')"
+
+# 3. Copy project files
 COPY . .
 
+# Create necessary directories
 RUN mkdir -p input memory outputs config && \
     chmod -R 777 input memory outputs config
 
+# 4. Security: Non-root user
 RUN useradd -m esguser
 USER esguser
 
 EXPOSE ${PORT}
 
+# 5. Healthcheck (Matched to your endpoint)
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
-    CMD python -c "import urllib.request; urllib.request.urlopen(f'http://localhost:{10000}/status')" || exit 1
+    CMD python -c "import urllib.request; urllib.request.urlopen(f'http://localhost:{PORT}/status')" || exit 1
 
-# Start the application
-CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT}"]
+# 6. Start the application (Single worker for RAM efficiency)
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT} --workers 1"]
