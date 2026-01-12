@@ -20,6 +20,6 @@ logging:
   silence_libraries: ["litellm", "openai", "urllib3", "chromadb"]
 
 visualization_params:
-  max_points: 500
-  tsne_perplexity: 30
+  max_points: 250
+  tsne_perplexity: 25
   text_preview_len: 300

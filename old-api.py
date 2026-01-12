@@ -20,6 +20,7 @@ logger = logging.getLogger(__name__)
 # Core Pipeline Logic
 from vectorstore_ingestion.full_ingestion_pipeline import run_ingestion_pipeline
 from qa_and_report_generation.report_generation_pipeline import ESGReportPipeline
+# from vectorstore_visualization.tsne_visualization import BRSRVectorVisualizer # too heavy for 512mb ram
 from vectorstore_visualization.pca_visualization import BRSRVectorVisualizer
 from accompanying_assistant.chatbot_pipeline import AccompanyingChatbot
 
@@ -220,6 +221,53 @@ async def download_audit_file(run_id: str, file_type: str):
     )
 
 
+
+# @app.get("/audit/visualize/{run_id}") # TSNE VERSION
+# async def get_vector_visualization(
+#     run_id: str,
+#     n_components: int = Query(
+#         2,
+#         ge=2,
+#         le=3,
+#         description="Dimensionality of t-SNE projection (2 or 3)",
+#     ),
+# ):
+#     """
+#     Generates a t-SNE semantic map of the vectorstore for a specific run.
+
+#     Optional query params:
+#     - n_components: 2 (default) or 3
+#     """
+#     run_dir = Path("runs") / run_id
+#     db_path = run_dir / "chroma_db"
+
+#     if not db_path.exists():
+#         return {"error": "Vectorstore not found for visualization."}
+
+#     try:
+#         # Load visualization params
+#         config = read_yaml(Path("config/ingestion_master_config.yaml"))
+#         params = config.visualization_params
+
+#         visualizer = BRSRVectorVisualizer(db_path=db_path)
+
+#         fig_json = visualizer.run_visualization(
+#             max_points=params.max_points,
+#             perplexity=params.tsne_perplexity,
+#             preview_len=params.text_preview_len,
+#             n_components=n_components,
+#         )
+
+#         return {
+#             "run_id": run_id,
+#             "n_components": n_components,
+#             "plot_json": fig_json,
+#         }
+
+#     except Exception as e:
+#         logger.error(f"Visualization endpoint failed for run_id={run_id}: {e}")
+#         return {"error": "Failed to generate visualization"}
+
 # PCA VERSION
 @app.get("/audit/visualize/{run_id}")
 async def get_vector_visualization(
@@ -250,11 +298,9 @@ async def get_vector_visualization(
         # Removed 'perplexity' argument as it's no longer in the method signature
         fig_json = visualizer.run_visualization(
             max_points=params.max_points,
-            perplexity=params.tsne_perplexity,  # ignored by PCA, kept for compatibility
             preview_len=params.text_preview_len,
             n_components=n_components,
         )
-
 
         return {
             "run_id": run_id,

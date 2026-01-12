@@ -1,9 +1,4 @@
-[ 2026-01-12 15:38:41,297 ] 54 datasets - INFO - PyTorch version 2.9.1 available.
-[ 2026-01-12 15:38:42,631 ] 219 sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
-[ 2026-01-12 15:38:42,631 ] 227 sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
-[ 2026-01-12 15:38:46,304 ] 24 utils.security_gate - INFO - Security Gate initialized: Layer 1 (Deterministic) & Layer 2 (Semantic).
-[ 2026-01-12 15:38:54,432 ] 108 fastapi - ERROR - Form data requires "python-multipart" to be installed. 
-You can install "python-multipart" with: 
-
-pip install python-multipart
-
+[ 2026-01-12 17:52:08,509 ] 22 chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[ 2026-01-12 17:52:08,854 ] 35 vectorstore_visualization.pca_visualization - INFO - Connected to collection: brsr_audit_collection
+[ 2026-01-12 17:52:09,155 ] 134 vectorstore_visualization.pca_visualization - INFO - Narrative vectors in DB: 232
+[ 2026-01-12 17:52:09,157 ] 148 vectorstore_visualization.pca_visualization - INFO - Computing PCA (2D) for 232 vectors...

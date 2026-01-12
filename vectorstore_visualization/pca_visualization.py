@@ -1,12 +1,13 @@
 import sys
 import random
 import re
+import gc
 import numpy as np
 from pathlib import Path
 from typing import Dict
 
 import plotly.graph_objects as go
-from sklearn.manifold import TSNE
+from sklearn.decomposition import PCA
 from chromadb import PersistentClient
 
 from utils.logger import logging
@@ -50,7 +51,8 @@ class BRSRVectorVisualizer:
         }
 
         raw = " ".join(
-            str(v) for v in [
+            str(v)
+            for v in [
                 meta.get("principle"),
                 meta.get("principle_context"),
                 meta.get("section"),
@@ -69,33 +71,37 @@ class BRSRVectorVisualizer:
         return "#bcbd22"
 
     def _is_narrative_chunk(self, meta: Dict) -> bool:
-        """Strict filter: only narrative chunks are allowed."""
         return meta.get("type") == "narrative"
 
     # ------------------------------------------------------------------
     # Text cleaning
     # ------------------------------------------------------------------
     def _clean_text(self, text: str) -> str:
-        """
-        Cleans PDF-extracted text for display:
-        - removes tabs and newlines
-        - collapses multiple spaces
-        - trims edges
-        """
         if not text:
             return ""
-
         text = text.replace("\t", " ").replace("\n", " ")
         text = re.sub(r"\s{2,}", " ", text)
         return text.strip()
 
+    def _generate_hover_text(self, doc, meta, preview_len):
+        clean_text = self._clean_text(doc or "")
+        preview = clean_text[:preview_len] + (
+            "…" if len(clean_text) > preview_len else ""
+        )
+        return (
+            f"{preview}<br>"
+            f"<hr>"
+            f"Principle: {meta.get('principle', 'N/A')}<br>"
+            f"Page: {meta.get('page', 'N/A')} | Source: {meta.get('source', 'N/A')}"
+        )
+
     # ------------------------------------------------------------------
-    # Main visualization
+    # Main visualization (PCA)
     # ------------------------------------------------------------------
     def run_visualization(
         self,
         max_points: int,
-        perplexity: int,
+        perplexity: int,   # kept for API compatibility, ignored by PCA
         preview_len: int,
         n_components: int = 2,
     ):
@@ -138,38 +144,18 @@ class BRSRVectorVisualizer:
                 subset_docs = documents
                 subset_meta = metadatas
 
-            # 4. Colors
+            # 4. PCA
+            logger.info(f"Computing PCA ({n_components}D) for {len(vectors)} vectors...")
+            pca = PCA(n_components=n_components, random_state=42)
+            reduced = pca.fit_transform(vectors)
+
+            # 5. Plot
             colors = [self.get_principle_color(m) for m in subset_meta]
+            hover_text = [
+                self._generate_hover_text(d, m, preview_len)
+                for d, m in zip(subset_docs, subset_meta)
+            ]
 
-            # 5. Dimensionality reduction
-            logger.info(f"Computing t-SNE ({n_components}D) for {len(vectors)} vectors...")
-            tsne = TSNE(
-                n_components=n_components,
-                perplexity=min(perplexity, len(vectors) - 1),
-                learning_rate='auto', # 'auto' is faster/better in newer sklearn versions
-                init="pca",
-                n_iter=250,           # Reduce from 1000 to 250 (Huge speedup)
-                n_jobs=1,             # Prevent thread-spawning overhead
-                random_state=42,
-            )
-            reduced = tsne.fit_transform(vectors)
-
-            # 6. Hover text (cleaned)
-            hover_text = []
-            for doc, meta in zip(subset_docs, subset_meta):
-                clean_text = self._clean_text(doc or "")
-                preview = clean_text[:preview_len] + (
-                    "…" if len(clean_text) > preview_len else ""
-                )
-
-                hover_text.append(
-                    f"{preview}<br>"
-                    f"<hr>"
-                    f"Principle: {meta.get('principle', 'N/A')}<br>"
-                    f"Page: {meta.get('page', 'N/A')} | Source: {meta.get('source', 'N/A')}"
-                )
-
-            # 7. Plot
             if n_components == 2:
                 trace = go.Scatter(
                     x=reduced[:, 0],
@@ -190,7 +176,7 @@ class BRSRVectorVisualizer:
                     y=reduced[:, 1],
                     z=reduced[:, 2],
                     mode="markers",
-                    marker=dict(size=4, color=colors, opacity=0.8),
+                    marker=dict(size=5, color=colors, opacity=0.8),
                     hoverinfo="text",
                     text=hover_text,
                 )
@@ -198,7 +184,7 @@ class BRSRVectorVisualizer:
             fig = go.Figure(trace)
 
             fig.update_layout(
-                title=f"Semantic Map (Narrative Only): {self.collection_name}",
+                title=f"Semantic Map (Narrative Only, PCA): {self.collection_name}",
                 template="plotly_white",
                 showlegend=False,
                 margin=dict(l=20, r=20, t=40, b=20),
@@ -214,6 +200,11 @@ class BRSRVectorVisualizer:
                     scaleratio=1,
                 )
 
+            # 6. Cleanup
+            del result, vectors, reduced
+            gc.collect()
+
+            # IMPORTANT: same output format as before
             return fig.to_json()
 
         except Exception as e:
