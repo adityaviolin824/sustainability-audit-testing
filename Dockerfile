@@ -17,9 +17,9 @@ ENV PORT=10000
 ENV OMP_NUM_THREADS=1
 ENV MKL_NUM_THREADS=1
 
-# 1. Install dependencies using uv
+# 1. Install dependencies using uv with a specific index strategy
 COPY requirements.txt .
-RUN uv pip install --no-cache --system -r requirements.txt
+RUN uv pip install --no-cache --system --index-strategy unsafe-best-match -r requirements.txt
 
 # 2. BAKE THE MODEL
 RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('paraphrase-MiniLM-L3-v2')"
