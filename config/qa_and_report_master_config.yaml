@@ -1,0 +1,15 @@
+pipeline:
+  question_path: "qa_and_report_generation/batched_question.jsonl"
+  retrieval_config: "config/retrieval_master_config.yaml"
+
+models:
+  extraction_model: "openai/gpt-4.1-mini"
+  refinement_model: "openai/gpt-4.1-nano" # 5 nano is causing too much latency
+
+filenames:
+  debug_md: "batchwise_responses_audit.md"
+  raw_responses_txt: "batchwise_answers_only.txt"
+  intermediate_json: "extraction_records.json"
+  consolidated_json: "consolidated_records.json"
+  final_docx: "ESG_Audit_Document.docx"
+  final_xlsx: "ESG_Disclosures.xlsx"

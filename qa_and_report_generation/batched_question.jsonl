@@ -1,0 +1,82 @@
+{"id":"GOV_01","batch":"governance_policies","question":"Does the company disclose the concentration of purchases and sales with related parties?"}
+{"id":"GOV_02","batch":"governance_policies","question":"Does the company have a formal anti-corruption and anti-bribery policy?"}
+{"id":"GOV_03","batch":"governance_policies","question":"Have there been any disciplinary actions taken by law enforcement agencies for bribery or corruption?"}
+{"id":"GOV_04","batch":"governance_policies","question":"Is there a formal cybersecurity and data privacy policy in place?"}
+{"id":"GOV_05","batch":"governance_policies","question":"Is there a formal grievance redressal or whistleblower mechanism for stakeholders?"}
+{"id":"GOV_06","batch":"governance_policies","question":"Does the company have formal policies covering all nine NGRBC principles (P1–P9)?"}
+{"id":"GOV_07","batch":"governance_policies","question":"Have the company’s sustainability policies been formally approved by the Board or executive leadership?"}
+{"id":"GOV_08","batch":"governance_policies","question":"Are functional web links provided for the company’s sustainability policies?"}
+{"id":"GOV_09","batch":"governance_policies","question":"Do the company’s sustainability policies extend to value chain partners?"}
+{"id":"GOV_10","batch":"governance_policies","question":"Has the company carried out independent external evaluations of its sustainability policies?"}
+{"id":"GOV_11","batch":"governance_policies","question":"Which external agencies have evaluated or certified the company’s sustainability policies?"}
+{"id":"GOV_12","batch":"governance_policies","question":"Who is the highest executive authority responsible for oversight of Business Responsibility policies?"}
+{"id":"GOV_13","batch":"governance_policies","question":"Is there a Board-level committee responsible for sustainability or ESG decision-making?"}
+{"id":"GOV_14","batch":"governance_policies","question":"What is the composition of the Board committee responsible for sustainability oversight?"}
+{"id":"GOV_15","batch":"governance_policies","question":"Have there been any adverse orders from regulatory authorities regarding anti-competitive conduct?"}
+{"id":"GOV_16","batch":"governance_policies","question":"What are the details of material fines or penalties paid to regulators and associated corrective actions?"}
+{"id":"GOV_17","batch":"governance_policies","question":"Which trade or industry associations is the company affiliated with?"}
+{"id":"GOV_18","batch":"governance_policies","question":"What specific public policy positions has the company advocated for during the year?"}
+{"id":"SRC_01","batch":"sourcing_circularity","question":"Does the company have documented procedures for sustainable sourcing?"}
+{"id":"SRC_02","batch":"sourcing_circularity","question":"What percentage of total input material is sourced sustainably, if disclosed?"}
+{"id":"SRC_03","batch":"sourcing_circularity","question":"What percentage of input material by value is sourced from MSMEs or small producers?"}
+{"id":"SRC_04","batch":"sourcing_circularity","question":"What percentage of input material by value is sourced from within India?"}
+{"id":"SRC_05","batch":"sourcing_circularity","question":"Is Extended Producer Responsibility (EPR) applicable to the company’s activities?"}
+{"id":"SRC_06","batch":"sourcing_circularity","question":"Is the company’s waste collection and disposal plan aligned with Pollution Control Board requirements?"}
+{"id":"SRC_07","batch":"sourcing_circularity","question":"What quantities of plastic waste, e-waste, and hazardous waste are reclaimed or recycled at end of life?"}
+{"id":"ENV_01","batch":"environmental_metrics","question":"What are the company’s total Scope 1 greenhouse gas emissions?"}
+{"id":"ENV_02","batch":"environmental_metrics","question":"What are the company’s total Scope 2 greenhouse gas emissions?"}
+{"id":"ENV_03","batch":"environmental_metrics","question":"What are the company’s total Scope 3 greenhouse gas emissions?"}
+{"id":"ENV_04","batch":"environmental_metrics","question":"What is the greenhouse gas emission intensity per rupee of turnover?"}
+{"id":"ENV_05","batch":"environmental_metrics","question":"What is the greenhouse gas emission intensity per unit of physical output?"}
+{"id":"ENV_06","batch":"environmental_metrics","question":"What is the company’s total energy consumption?"}
+{"id":"ENV_07","batch":"environmental_metrics","question":"What is the energy intensity per rupee of turnover?"}
+{"id":"ENV_08","batch":"environmental_metrics","question":"What percentage of total energy consumption is derived from renewable sources?"}
+{"id":"ENV_09","batch":"environmental_metrics","question":"What is the total volume of water withdrawal and total water consumption?"}
+{"id":"ENV_10","batch":"environmental_metrics","question":"What is the water consumption intensity per rupee of turnover?"}
+{"id":"ENV_11","batch":"environmental_metrics","question":"What is the water consumption intensity per unit of physical output?"}
+{"id":"ENV_12","batch":"environmental_metrics","question":"What is the total volume of water discharged by destination and level of treatment?"}
+{"id":"ENV_13","batch":"environmental_metrics","question":"Has the company implemented a Zero Liquid Discharge (ZLD) mechanism and what is its coverage?"}
+{"id":"ENV_14","batch":"environmental_metrics","question":"What is the total weight of waste generated, recovered, and disposed, including category-wise breakup?"}
+{"id":"ENV_15","batch":"environmental_metrics","question":"What material sustainability issues have been identified as risks to the business?"}
+{"id":"ENV_16","batch":"environmental_metrics","question":"What is the reported financial implication of climate change risks (positive or negative)?"}
+{"id":"ENV_17","batch":"environmental_metrics","question":"Has the company conducted a Life Cycle Perspective / Assessment (LCA) for its products or services?"}
+{"id":"ENV_18","batch":"environmental_metrics","question":"Does the company operate in or near ecologically sensitive areas, and are environmental clearances complied with?"}
+{"id":"ENV_19","batch":"environmental_metrics","question":"What innovative technologies or solutions has the company implemented to improve resource efficiency?"}
+{"id":"WRK_01","batch":"workforce_diversity","question":"What is the total number of employees and workers, with gender-wise breakup?"}
+{"id":"WRK_02","batch":"workforce_diversity","question":"What is the ratio of permanent to contractual employees?"}
+{"id":"WRK_03","batch":"workforce_diversity","question":"What percentage of women are represented on the Board of Directors?"}
+{"id":"WRK_04","batch":"workforce_diversity","question":"What percentage of women are represented among Key Management Personnel?"}
+{"id":"WRK_05","batch":"workforce_diversity","question":"How many differently-abled employees are part of the workforce?"}
+{"id":"WRK_06","batch":"workforce_diversity","question":"What is the annual turnover or attrition rate for permanent employees and the three-year trend?"}
+{"id":"WRK_07","batch":"workforce_diversity","question":"What percentage of employees in India are paid above the statutory minimum wage?"}
+{"id":"WRK_08","batch":"workforce_diversity","question":"What are the return-to-work and retention rates for permanent employees who took parental leave?"}
+{"id":"WRK_09","batch":"workforce_diversity","question":"What percentage of eligible employees received formal performance and career development reviews?"}
+{"id":"WRK_10","batch":"workforce_diversity","question":"What percentage of the company’s permanent employees are members of recognized unions or associations?"}
+{"id":"WRK_11","batch":"workforce_diversity","question":"What is the company’s wage distribution percentage across Rural, Semi-urban, Urban, and Metropolitan locations?"}
+{"id":"EWB_01","batch":"employee_wellbeing_safety","question":"What percentage of permanent employees are covered by health and accident insurance?"}
+{"id":"EWB_02","batch":"employee_wellbeing_safety","question":"Does the company provide life insurance or compensatory packages in the event of employee death?"}
+{"id":"EWB_03","batch":"employee_wellbeing_safety","question":"What percentage of permanent employees received health and safety training?"}
+{"id":"EWB_04","batch":"employee_wellbeing_safety","question":"What percentage of permanent employees received skill upgradation training?"}
+{"id":"EWB_05","batch":"employee_wellbeing_safety","question":"What is the reported Lost Time Injury Frequency Rate (LTIFR) for employees?"}
+{"id":"EWB_06","batch":"employee_wellbeing_safety","question":"How many work-related fatalities or high-consequence injuries were reported?"}
+{"id":"EWB_07","batch":"employee_wellbeing_safety","question":"Does the company provide transition assistance programs to facilitate continued employability for retiring staff?"}
+{"id":"EWB_08","batch":"employee_wellbeing_safety","question":"Does the company have a formal Business Continuity and Disaster Management Plan?"}
+{"id":"HR_01","batch":"human_rights","question":"Does the company have a formal process to identify and mitigate potential human rights violations?"}
+{"id":"HR_02","batch":"human_rights","question":"How are human rights requirements communicated to employees and collaborators?"}
+{"id":"HR_03","batch":"human_rights","question":"What corrective action mechanisms are in place to prevent recurrence of human rights issues?"}
+{"id":"HR_04","batch":"human_rights","question":"Are there grievance redressal mechanisms for raising human rights concerns?"}
+{"id":"HR_05","batch":"human_rights","question":"What measures are in place to prevent retaliation against complainants?"}
+{"id":"HR_06","batch":"human_rights","question":"Do human rights requirements form part of the company’s business agreements and contracts?"}
+{"id":"HR_07","batch":"human_rights","question":"What percentage of value chain partners have been assessed for human rights risks?"}
+{"id":"CSR_01","batch":"csr_community","question":"Is Corporate Social Responsibility (CSR) applicable to the company?"}
+{"id":"CSR_02","batch":"csr_community","question":"What is the total number of beneficiaries reached through CSR initiatives?"}
+{"id":"CSR_03","batch":"csr_community","question":"What percentage of CSR beneficiaries belong to vulnerable or marginalized groups?"}
+{"id":"CSR_04","batch":"csr_community","question":"Has the company undertaken CSR projects in aspirational districts and what was the spend?"}
+{"id":"CSR_05","batch":"csr_community","question":"Has the company undertaken Social Impact Assessments (SIA) or Rehabilitation and Resettlement (R&R) projects?"}
+{"id":"STK_01","batch":"stakeholder_engagement","question":"What is the company’s process for identifying key stakeholder groups?"}
+{"id":"STK_02","batch":"stakeholder_engagement","question":"Which stakeholder groups have been identified as vulnerable or marginalized?"}
+{"id":"STK_03","batch":"stakeholder_engagement","question":"What actions has the company taken to address the concerns of vulnerable stakeholder groups?"}
+{"id":"STK_04","batch":"stakeholder_engagement","question":"Has the company conducted consumer or customer satisfaction surveys during the year?"}
+{"id":"CST_01","batch":"customer_responsibility","question":"What percentage of turnover comes from products or services carrying environmental and social information?"}
+{"id":"CST_02","batch":"customer_responsibility","question":"How many consumer complaints were received regarding data privacy and cybersecurity during the year?"}
+{"id":"CST_03","batch":"customer_responsibility","question":"Were there any instances of product recalls (voluntary or forced) on account of safety issues?"}

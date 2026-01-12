@@ -1,0 +1,25 @@
+# Master Configuration - Global Settings Only
+storage:
+  base_run_dir: "runs"
+
+output_paths:
+  formatted_txt: "formatted_report.txt"
+  chunks_debug: "chunks_preview.txt"
+  db_path: "chroma_db"
+
+processing_params:
+  hard_page_limit: 100
+  batch_size: 5
+  max_workers: 2
+
+vectorstore_params:
+  embedding_model: "text-embedding-3-small"
+  collection_name: "brsr_audit_collection"
+
+logging:
+  silence_libraries: ["litellm", "openai", "urllib3", "chromadb"]
+
+visualization_params:
+  max_points: 500
+  tsne_perplexity: 30
+  text_preview_len: 300

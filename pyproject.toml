@@ -1,0 +1,43 @@
+[project]
+name = "sustainability-audit"
+version = "0.1.0"
+requires-python = ">=3.11, <3.14"
+dependencies = [
+    "chromadb>=1.1.0",
+    "langchain>=0.3.27",
+    "langchain-chroma>=0.2.6",
+    "langchain-community>=0.3.30",
+    "langchain-core>=0.3.76",
+    "langchain-openai>=0.3.33",
+    "langchain-text-splitters>=0.3.11",
+    "litellm>=1.77.5",
+    "matplotlib>=3.10.6",
+    "numpy>=2.3.3",
+    "openai>=1.109.1",
+    "pandas>=2.3.3",
+    "plotly>=6.3.0",
+    "python-dotenv>=1.1.1",
+    "requests>=2.32.5",
+    "scikit-learn>=1.7.2",
+    "scipy>=1.16.2",
+    "sentence-transformers>=5.1.1",
+    "setuptools>=80.9.0",
+    "tiktoken>=0.11.0",
+    "torch>=2.8.0",
+    "tqdm>=4.67.1",
+    "transformers>=4.56.2",
+    "langchain-huggingface>=1.0.0",
+    "langchain-experimental>=0.0.42",
+    "python-box",
+    "ensure",
+    "pyyaml",
+    "pypdf",
+    "ragas>=0.2.0",              
+    "pydantic-settings>=2.4.0",
+    "python-magic>=0.4.27",
+    "llmwhisperer-client",         
+    "python-docx",
+    "openpyxl",
+    "fastapi",
+    "pyahocorasick"
+]

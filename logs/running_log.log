@@ -1,0 +1,4 @@
+[ 2026-01-12 12:24:47,063 ] 22 chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[ 2026-01-12 12:24:47,407 ] 34 vectorstore_visualization.tsne_visualization - INFO - Connected to collection: brsr_audit_collection
+[ 2026-01-12 12:24:47,739 ] 128 vectorstore_visualization.tsne_visualization - INFO - Narrative vectors in DB: 232
+[ 2026-01-12 12:24:47,742 ] 145 vectorstore_visualization.tsne_visualization - INFO - Computing t-SNE (3D) for 232 vectors...
